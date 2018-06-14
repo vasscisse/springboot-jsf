@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>JSF Application with Spring Boot</title>
+        <h:outputStylesheet library="css" name="style.css"  />
+    </h:head>
+    <h:body>
+        <h2>
+            <f:view>
+                <h:outputText value="#{courseBean.message}" />
+            </f:view>
+        </h2>
+
+        <img alt="SpringBoot" src="images/springboot.png" />
+
+        <h4>Enter course and description</h4>
+        <h:form id="user-form">
+            <table>
+                <tr>
+                    <td><h:outputLabel for="name">Course Name</h:outputLabel></td>
+                    <td><h:inputText id="name" value="#{courseBean.name}" required="true"
+                                     requiredMessage="Course Name is required"/></td>
+                </tr>
+                <tr>
+                    <td><h:outputLabel for="name">Course Description</h:outputLabel></td>
+                    <td><h:inputText id="desc" value="#{courseBean.desc}" required="true"
+                         requiredMessage="Course Description is required"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <h:commandButton id="addButton" value="Add"
+                                         action="#{courseBean.addNewCourse()}"/>
+                    </td>
+                </tr>
+            </table>
+        </h:form>
+
+        <br /><br />
+        <h4>List of courses from the database</h4>
+        <h:dataTable id="courseTable" value="#{courseBean.listOfCourses}" var="c"
+                     rendered="#{courseBean.showDataTable()}"
+                     styleClass="table"
+                     headerClass="table-header"
+                     rowClasses="table-odd-row,table-even-row">
+
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                #{c.id}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">name</f:facet>
+                #{c.name}
+            </h:column>
+
+            <h:column>
+                <f:facet name="header">description</f:facet>
+                #{c.description}
+            </h:column>
+
+        </h:dataTable>
+    </h:body>
+</html>
