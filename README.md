@@ -1,5 +1,14 @@
 # Spring Boot with JSF and Hibernate
 
+### POM
+
+* JSF 2.2 (Glassfish)
+* Spring Boot 1.5.13.RELEASE
+* Java 8
+* H2 database
+* Hikari CP
+
+
 ### Notes
 
 This version does NOT use a **web.xml** file.
